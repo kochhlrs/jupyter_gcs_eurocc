@@ -3,7 +3,7 @@ Template repository for custom JupyterHub templates and static files.
 
 ## Templates
 
-This branch contains any templates that should be changed on the staging JupyterHub instance. Templates are written in [Jinja](https://jinja.palletsprojects.com/en/3.1.x/). For more information, refer to the [official JupyterHub documentation](https://jupyterhub.readthedocs.io/en/stable/reference/templates.html).
+This branch contains any templates that should be changed on the production JupyterHub instance. Templates are written in [Jinja](https://jinja.palletsprojects.com/en/3.1.x/). For more information, refer to the [official JupyterHub documentation](https://jupyterhub.readthedocs.io/en/stable/reference/templates.html).
 
 ### Suggested changes for a custom JupyterHub
 
