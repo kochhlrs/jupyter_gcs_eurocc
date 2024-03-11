@@ -3,21 +3,21 @@
 
 <head>
   <meta charset="utf-8">
-  {%- block meta -%}
+  {% block meta -%}
   {%- endblock -%}
 
-  <title>{%- block title -%}Jupyter-JSC{%- endblock -%}</title>
+  <title>{% block title %}Jupyter EuroCC{% endblock %}</title>
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta property="og:image" content='{{ static_url("images/mini_website.jpg", include_version=False) }}'>
   <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="jupyter-jsc">
-  <meta property="og:title" content="jupyter-jsc">
+  <meta property="og:site_name" content="jupyter-eurocc">
+  <meta property="og:title" content="jupyter-eurocc">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://{{hostname}}">
+  <meta property="og:url" content="https://{{hostname}}{{ base_url|default('', true) }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  {%- block favicon -%}
+  {% block favicon -%}
   <link rel="icon" href='{{static_url("images/favicon.svg", include_version=False)}}' type="jpg/png" />
-  {%- endblock -%}
+  {%- endblock %}
 
   <link rel="stylesheet" href='{{static_url("components/bootstrap-5.0/dist/css/bootstrap.min.css")}}' type="text/css" />
   <link rel="stylesheet" href='{{static_url("css/base.css")}}' type="text/css" />
@@ -54,10 +54,9 @@
       }
     });
   </script>
-
   <script type="text/javascript">
     window.jhdata = {
-      base_url: "{{base_url}}",
+      base_url: "{{ base_url }}",
       prefix: "{{prefix}}",
       {%- if user %}
       user: "{{user.json_escaped_name}}",
@@ -76,10 +75,10 @@
       options_form: true,
       {%- else %}
       options_form: false,
-      {%- endif -%}
+      {%- endif %}
       {%- if cancel_url %}
       cancel_url: "{{ cancel_url }}",
-      {%- endif -%}
+      {%- endif %}
       xsrf_token: "{{ xsrf_token }}",
     }
   </script>
@@ -109,6 +108,16 @@
 
   {#- SCRIPTS #}
   <script src='{{static_url("js/logout.js", include_version=False) }}' type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    // Enable tooltips everywhere
+    function enableTooltips() {
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      })
+    }
+    $( function() { enableTooltips() });
+  </script>
   {% block script -%}
   {%- endblock %}
 </body>
